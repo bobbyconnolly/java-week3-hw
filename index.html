@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growing Our Pet Shop: The Next Chapter! 🐾</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+        margin-top: 2rem;
+      }
+      pre {
+        background: #f8f9fa;
+        border-radius: 4px;
+        padding: 1rem;
+        overflow-x: auto;
+        border: 1px solid #e9ecef;
+        width: calc(100% - 2rem);
+      }
+      .keyword {
+        color: #0033b3;
+      }
+      .string {
+        color: #067d17;
+      }
+      .comment {
+        color: #8c8c8c;
+      }
+      .number {
+        color: #1750eb;
+      }
+      .type {
+        color: #000080;
+      }
+      .exercise-box {
+        background: #e3f2fd;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        border-left: 4px solid #1976d2;
+      }
+      .try-it-box {
+        background: #fff3e0;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        border-left: 4px solid #f57c00;
+      }
+      .quick-check {
+        background: #f1f8e9;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        border-left: 4px solid #7cb342;
+      }
+      .tip {
+        background: #e8eaf6;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        border-left: 4px solid #3f51b5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Our Pet Shop is Growing! 📈</h1>
+
+    <p>
+      Great news! Your pet shop software has been a huge success, and now other pet shops want to use it too! But before
+      we can expand, we need to add some new features... 🎉
+    </p>
+
+    <div class="quick-check">
+      <h3>Quick Review 🤔</h3>
+      <p>Before we dive in, let's make sure we remember the basics. Fill in the blanks:</p>
+      <pre>ArrayList&lt;Pet&gt; pets = _________________;  // How do we create a new ArrayList?
+      
+<span class="comment">// What will this print?</span>
+ArrayList&lt;String&gt; names = new ArrayList&lt;&gt;();
+names.add("Max");
+System.out.println(names.size());</pre>
+    </div>
+
+    <h2>Adding Special Features! ✨</h2>
+
+    <div class="exercise-box">
+      <h3>Premium Pets Section</h3>
+      <p>
+        Our shops now have a "Premium Pets" section. Create a class called <code>PremiumPetManager</code> in your
+        <code>week3.homework</code> package:
+      </p>
+
+      <pre><span class="keyword">public class</span> PremiumPetManager {
+    <span class="keyword">private</span> ArrayList&lt;Pet&gt; premiumPets;
+    <span class="keyword">private</span> ArrayList&lt;Double&gt; prices;  // Stores price for each pet
+
+    <span class="keyword">public</span> PremiumPetManager() {
+        premiumPets = <span class="keyword">new</span> ArrayList&lt;&gt;();
+        prices = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    }
+
+    <span class="comment">// TODO: Add a method to add a premium pet with its price
+    // Make sure both lists stay in sync!</span>
+    <span class="keyword">public void</span> addPremiumPet(Pet pet, <span class="keyword">double</span> price) {
+        // Your code here...
+    }
+}</pre>
+    </div>
+
+    <div class="tip">
+      <strong>Think About It! 💭</strong>
+      <p>
+        We're using two ArrayLists that need to stay in sync. Is this the best way? Could anything go wrong? We'll find
+        a better solution soon!
+      </p>
+    </div>
+
+    <div class="try-it-box">
+      <h3>Let's Test It!</h3>
+      <p>Try adding these premium pets:</p>
+      <pre>addPremiumPet(<span class="keyword">new</span> Dog(<span class="string">"Diamond"</span>, <span class="number">2</span>), <span class="number">1999.99</span>);
+addPremiumPet(<span class="keyword">new</span> Cat(<span class="string">"Pearl"</span>, <span class="number">1</span>), <span class="number">1499.99</span>);
+addPremiumPet(<span class="keyword">new</span> Fish(<span class="string">"Gold"</span>, <span class="number">1</span>, WaterType.FRESHWATER), <span class="number">999.99</span>);</pre>
+
+      <p>Now add a method to find the most expensive pet:</p>
+      <pre><span class="keyword">public</span> Pet getMostExpensivePet() {
+    <span class="comment">// Your code here...</span>
+}</pre>
+    </div>
+
+    <div class="exercise-box">
+      <h3>Price Range Search</h3>
+      <p>Customers often have a budget in mind. Add a method to find pets within a price range:</p>
+
+      <pre><span class="keyword">public</span> ArrayList&lt;Pet&gt; findPetsInPriceRange(<span class="keyword">double</span> minPrice, 
+                                            <span class="keyword">double</span> maxPrice) {
+    ArrayList&lt;Pet&gt; results = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    <span class="comment">// Your code here...</span>
+    <span class="keyword">return</span> results;
+}</pre>
+    </div>
+    <h2>Making Our Premium Pets System Better! 🔧</h2>
+
+    <p>Did you notice any problems with our current system? Let's think about it:</p>
+    <ul>
+      <li>We need two lists (pets and prices) that must stay in sync 😰</li>
+      <li>To find a pet's price, we need to find its position first 🔍</li>
+      <li>If we remove a pet, we need to remove from both lists... at the right positions! 😱</li>
+    </ul>
+
+    <div class="tip">
+      <strong>There's a better way! 🎯</strong>
+      <p>
+        Remember HashMap from our lab? It's perfect for connecting two pieces of information together - like a pet and
+        its price!
+      </p>
+    </div>
+
+    <div class="exercise-box">
+      <h3>Upgrading to HashMap</h3>
+      <p>
+        Let's create a better version of our premium pets manager. Create a new class called
+        <code>BetterPremiumPetManager</code>:
+      </p>
+
+      <pre><span class="keyword">public class</span> BetterPremiumPetManager {
+    <span class="keyword">private</span> HashMap&lt;Pet, Double&gt; premiumPets;  // Pet -> Price
+
+    <span class="keyword">public</span> BetterPremiumPetManager() {
+        premiumPets = <span class="keyword">new</span> HashMap&lt;&gt;();
+    }
+
+    <span class="keyword">public void</span> addPremiumPet(Pet pet, <span class="keyword">double</span> price) {
+        <span class="comment">// TODO: Add the pet and its price</span>
+    }
+
+    <span class="keyword">public</span> Double getPetPrice(Pet pet) {
+        <span class="comment">// TODO: Return the pet's price (or null if not found)</span>
+    }
+}</pre>
+    </div>
+
+    <div class="try-it-box">
+      <h3>Let's Compare! ⚖️</h3>
+      <p>Try these operations with both managers and see which is easier:</p>
+
+      <pre><span class="comment">// Create test pets</span>
+Dog diamond = <span class="keyword">new</span> Dog(<span class="string">"Diamond"</span>, <span class="number">2</span>);
+Cat pearl = <span class="keyword">new</span> Cat(<span class="string">"Pearl"</span>, <span class="number">1</span>);
+
+<span class="comment">// Add to both managers</span>
+premiumPetManager.addPremiumPet(diamond, <span class="number">1999.99</span>);
+betterPremiumPetManager.addPremiumPet(diamond, <span class="number">1999.99</span>);
+
+<span class="comment">// Try to find prices</span>
+<span class="comment">// Try to update prices</span>
+<span class="comment">// Try to remove pets</span></pre>
+    </div>
+
+    <div class="quick-check">
+      <h3>Quick Questions about HashMap</h3>
+      <p>Think about these (we'll discuss in class):</p>
+      <ol>
+        <li>Why do we use <code>Pet</code> as the key and <code>Double</code> as the value?</li>
+        <li>What happens if we try to add the same pet twice?</li>
+        <li>Could we use the pet's name as the key instead? What are the pros and cons?</li>
+      </ol>
+    </div>
+
+    <h2>Let's Add Some Useful Features! 🌟</h2>
+
+    <div class="exercise-box">
+      <h3>Premium Pet Operations</h3>
+      <p>Add these methods to your <code>BetterPremiumPetManager</code>:</p>
+
+      <pre><span class="keyword">public void</span> applyDiscount(Pet pet, <span class="keyword">double</span> discountPercent) {
+    <span class="comment">// TODO: Reduce the pet's price by the discount percentage
+    // If pet costs $100 and discount is 20.0, new price should be $80</span>
+}
+
+<span class="keyword">public</span> ArrayList&lt;Pet&gt; getPetsCheaperThan(<span class="keyword">double</span> maxPrice) {
+    <span class="comment">// TODO: Return list of all pets costing less than maxPrice</span>
+}
+
+<span class="keyword">public void</span> printPetsSortedByPrice() {
+    <span class="comment">// TODO: Print all pets, sorted by price (highest first)
+    // Hint: You might want to create a list first, then sort it!</span>
+}</pre>
+    </div>
+
+    <div class="tip">
+      <strong>HashMap Tip! 💡</strong>
+      <p>To work with all entries in a HashMap, you can use:</p>
+      <ul>
+        <li><code>premiumPets.keySet()</code> - gets all keys (pets)</li>
+        <li><code>premiumPets.values()</code> - gets all values (prices)</li>
+        <li><code>premiumPets.entrySet()</code> - gets all key-value pairs</li>
+      </ul>
+    </div>
+
+    <div class="try-it-box">
+      <h3>Test Your Methods!</h3>
+      <p>Create some test code like this:</p>
+
+      <pre>BetterPremiumPetManager manager = <span class="keyword">new</span> BetterPremiumPetManager();
+
+<span class="comment">// Add some pets</span>
+manager.addPremiumPet(<span class="keyword">new</span> Dog(<span class="string">"Diamond"</span>, <span class="number">2</span>), <span class="number">1999.99</span>);
+manager.addPremiumPet(<span class="keyword">new</span> Cat(<span class="string">"Pearl"</span>, <span class="number">1</span>), <span class="number">1499.99</span>);
+manager.addPremiumPet(<span class="keyword">new</span> Fish(<span class="string">"Gold"</span>, <span class="number">1</span>, WaterType.FRESHWATER), <span class="number">999.99</span>);
+
+<span class="comment">// Test your methods</span>
+manager.printPetsSortedByPrice();
+manager.applyDiscount(diamond, <span class="number">20.0</span>);  // 20% off
+System.out.println(<span class="string">"Pets under $1500: "</span> + manager.getPetsCheaperThan(<span class="number">1500.0</span>));</pre>
+    </div>
+    <h2>Quick Collection Questions!</h2>
+
+    <div class="quick-check">
+      <h3>Match the Tool to the Job</h3>
+      <p>For each scenario, which collection would you use? Choose from: ArrayList, LinkedList, or HashMap</p>
+      <ol>
+        <li>Store student grades where you need to look them up by student ID</li>
+        <li>Keep track of customers waiting in line (first in, first out)</li>
+        <li>List of high scores that you mainly add to at the end</li>
+      </ol>
+      <p class="submission-note">Write a one-sentence explanation for each choice!</p>
+    </div>
+
+    <h2>Final Challenge: The Spring Pet Sale! 🌸</h2>
+
+    <div class="exercise-box">
+      <h3>Special Sale Manager</h3>
+      <p>
+        The pet shop is having a spring sale! Create a new class called <code>PetSaleManager</code> that helps manage
+        the sale:
+      </p>
+
+      <pre><span class="keyword">public class</span> PetSaleManager {
+    <span class="keyword">private</span> HashMap&lt;String, Double&gt; regularPrices;    // Pet name -> Regular price
+    <span class="keyword">private</span> ArrayList&lt;String&gt; saleItems;            // Pets currently on sale
+
+    <span class="keyword">public</span> PetSaleManager() {
+        regularPrices = <span class="keyword">new</span> HashMap&lt;&gt;();
+        saleItems = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    }
+
+    <span class="comment">// Add these methods:</span>
+
+    <span class="keyword">public void</span> addPet(String name, <span class="keyword">double</span> price) {
+        <span class="comment">// Add a pet with its regular price</span>
+    }
+
+    <span class="keyword">public void</span> putPetOnSale(String name) {
+        <span class="comment">// Add pet to sale list if it exists in regularPrices</span>
+    }
+
+    <span class="keyword">public double</span> getCurrentPrice(String name) {
+        <span class="comment">// If pet is on sale, return 20% off regular price
+        // If not on sale, return regular price
+        // Return -1 if pet doesn't exist</span>
+    }
+
+    <span class="keyword">public void</span> printCurrentPrices() {
+        <span class="comment">// Print all pets and their current prices
+        // Mark sale items with a 🏷️ emoji</span>
+    }
+}</pre>
+    </div>
+
+    <div class="try-it-box">
+      <h3>Test Your Sale Manager!</h3>
+      <p>Create a main method to test your sale manager:</p>
+
+      <pre>PetSaleManager saleManager = <span class="keyword">new</span> PetSaleManager();
+
+<span class="comment">// Add some pets</span>
+saleManager.addPet(<span class="string">"Buddy"</span>, <span class="number">500.0</span>);
+saleManager.addPet(<span class="string">"Luna"</span>, <span class="number">400.0</span>);
+saleManager.addPet(<span class="string">"Max"</span>, <span class="number">450.0</span>);
+
+<span class="comment">// Put some pets on sale</span>
+saleManager.putPetOnSale(<span class="string">"Buddy"</span>);
+saleManager.putPetOnSale(<span class="string">"Luna"</span>);
+
+<span class="comment">// Print everything</span>
+saleManager.printCurrentPrices();
+
+<span class="comment">// Expected output something like:
+// 🏷️ Buddy: $400.0 (On Sale!)
+// 🏷️ Luna: $320.0 (On Sale!)
+// Max: $450.0</span></pre>
+    </div>
+
+    <div class="tip">
+      <strong>Extra Credit! ⭐</strong>
+      <p>Want to make your sale manager even better? Try adding these features:</p>
+      <ul>
+        <li>Method to end the sale for a specific pet</li>
+        <li>Different discount percentages for different pets</li>
+        <li>Keep track of how long each pet has been on sale</li>
+      </ul>
+      <p>Remember to test any features you add!</p>
+    </div>
+
+    <p>
+      Great job completing the homework! You've learned how to use different collections to solve real problems in our
+      pet shop. Next week, we'll learn even more ways to organize our code! 🚀
+    </p>
+  </body>
+</html>
